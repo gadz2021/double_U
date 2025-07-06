@@ -375,7 +375,7 @@ export class HealthDataSummary {
 
 
 export class StepsApiService {
-  private baseUrl: string = 'http://172.23.159.53:5000/api';
+  private baseUrl: string = 'http://12.20.212.5:5000/api';
 
   async savePoints(userId: number, points: number, sourceType: string = 'manual'): Promise<StepsSaveResponse> {
     const httpRequest = http.createHttp();
@@ -466,7 +466,7 @@ export class StepsApiService {
 }
 
 export class UserApiService {
-  private static readonly BASE_URL: string = 'http://172.23.159.53:5000';
+  private static readonly BASE_URL: string = 'http://172.20.212.5:5000';
   private baseUrl: string = `${UserApiService.BASE_URL}/api`;
 
   static getAvatarUrl(avatarPath: string): string {

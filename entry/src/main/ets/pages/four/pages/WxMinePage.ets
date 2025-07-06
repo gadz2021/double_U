@@ -169,9 +169,9 @@ export struct WxMinePage {
               cellHeight: _cellH,
               lineLeftEdge: _leftSpace,
               leftIcon: $rawfile("wechat/mine/ic_album.png"),
-              title: '能量助手',
+              title: '精力助手',
               clickCallBack: (): void => {
-                this.clickCell('能量助手')
+                this.clickCell('精力助手')
               },
             })
             JhSetCell({
@@ -304,7 +304,7 @@ export struct WxMinePage {
       router.pushUrl({ url: 'pages/four/pages/knowledge/knowledge' })
     } else if (title === '健康档案') {
       router.pushUrl({ url: 'pages/four/pages/health/HealthRecordsPage' })
-    } else if (title === '能量助手') {
+    } else if (title === '精力助手') {
       router.pushUrl({ url: 'pages/four/pages/energy_assistant/EnergyAssistantPage' })
     } else if (title === '检查更新') {
       router.pushUrl({url: 'pages/four/pages/gengxin/JianChaGengXinPage'})
