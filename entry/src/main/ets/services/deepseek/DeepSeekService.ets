@@ -68,7 +68,8 @@ class StreamChunk {
 
 export class DeepSeekService {
   private static readonly BASE_URL: string = 'https://api.siliconflow.cn/v1/';
-  private static readonly API_KEY: string = 'sk-bqqzqbxyfghwojjaehoqfxksyhivbxmdjnipzowxcauktzzx';
+  private static readonly API_KEY: string = 'sk-kvgnywlwydfxodlynigenzpmlaetthwsjncqnyobrcxaykdt';
+  // 再偷偷用我api_key给你玛莎拉
 
   /**
    * 发送真正的流式请求到DeepSeek API

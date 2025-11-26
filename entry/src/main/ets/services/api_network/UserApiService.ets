@@ -375,7 +375,7 @@ export class HealthDataSummary {
 
 
 export class StepsApiService {
-  private baseUrl: string = 'http://12.20.212.5:5000/api';
+  private baseUrl: string = 'http://47.121.114.70:5000/api';
 
   async savePoints(userId: number, points: number, sourceType: string = 'manual'): Promise<StepsSaveResponse> {
     const httpRequest = http.createHttp();
@@ -466,7 +466,7 @@ export class StepsApiService {
 }
 
 export class UserApiService {
-  private static readonly BASE_URL: string = 'http://172.20.212.5:5000';
+  private static readonly BASE_URL: string = 'http://47.121.114.70:5000';
   private baseUrl: string = `${UserApiService.BASE_URL}/api`;
 
   static getAvatarUrl(avatarPath: string): string {
@@ -773,13 +773,31 @@ export class UserApiService {
       const result: LoginResponse = JSON.parse(responseText) as LoginResponse;
       return result;
     } catch (error) {
+      // 直接输出完整的错误信息用于调试
+      console.error('[Login] 完整错误信息:', JSON.stringify(error, Object.getOwnPropertyNames(error)));
+
+      let errorMessage = '登录失败';
+
+      // 处理各种可能的错误格式
+      if (error && typeof error === 'object') {
+        if (error.message) {
+          errorMessage = error.message;
+        } else if (error.data && error.data.message) {
+          errorMessage = error.data.message;
+        } else if (error.code) {
+          errorMessage = `网络错误: ${error.code}`;
+        } else {
+          errorMessage = '网络连接异常';
+        }
+      }
+
+      console.log('[Login] 处理后的错误消息:', errorMessage);
+
       const errorResponse: LoginResponse = {
         success: false,
-        message: '网络连接失败，请检查网络设置'
+        message: errorMessage
       };
       return errorResponse;
-    } finally {
-      httpRequest.destroy();
     }
   }
 
